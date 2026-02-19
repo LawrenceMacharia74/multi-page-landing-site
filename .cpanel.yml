@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/ndovesha/public_html/
-    - /usr/bin/rsync -av --delete $TRAVIS_BUILD_DIR/ $DEPLOYPATH
+    - export DEPLOYPATH=/home/ndovesha/public_html
+    - /usr/bin/rsync -av $TRAVIS_BUILD_DIR/ $DEPLOYPATH
