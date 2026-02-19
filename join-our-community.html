@@ -1,0 +1,2906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Community - Ndovesha</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon-32x32.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #003366;
+            --primary-light: #1e4d8b;
+            --gold: #febf0f;
+            --gold-light: #ffd54f;
+            --accent: #5a9fd4;
+            --accent-soft: #e8f4ff;
+            --green: #00FF00;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --text-muted: #999;
+        }
+
+        /* Advanced Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        @keyframes floatSlow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes morphBlob {
+            0%, 100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+            50% {
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(254, 191, 15, 0.15), 0 2px 10px rgba(254, 191, 15, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            line-height: 0;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            transition: height 0.3s ease;
+            object-fit: contain;
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav.scrolled {
+            padding: 0.6rem 4%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(254, 191, 15, 0.18), 0 2px 12px rgba(254, 191, 15, 0.12);
+        }
+
+        nav.scrolled .logo img {
+            height: 25px;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .dropdown-arrow {
+            font-size: 0.7rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            min-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            z-index: 1001;
+            border: 1px solid rgba(0, 51, 102, 0.1);
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--white);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            color: var(--primary);
+            transition: all 0.3s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .nav-cta {
+            background: transparent !important;
+            color: var(--primary) !important;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            background: var(--green) !important;
+            color: var(--primary) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-signup-btn {
+            background: var(--gold) !important;
+            color: var(--primary) !important;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-signup-btn:hover {
+            background: var(--green) !important;
+            color: var(--primary) !important;
+            transform: translateY(-2px);
+        }
+
+        .mobile-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .mobile-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Login Button */
+        .mobile-login-btn {
+            display: none;
+            padding: 0.6rem 1.5rem;
+            background: var(--gold);
+            color: var(--primary);
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .mobile-login-btn:hover {
+            background: var(--green);
+            color: var(--white);
+        }
+
+        /* Community Hero - Engaging Split Layout */
+        .community-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fef9f3 0%, #fdf6ed 100%);
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-hero-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Left side - Image with floating elements */
+        .community-image-side {
+            position: relative;
+            padding: 2rem;
+        }
+
+        .community-main-image {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .community-main-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .community-main-image .placeholder-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #e8d5c4 0%, #d4c4b0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* Floating call notification */
+        .floating-notification {
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: float 4s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .notification-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffd54f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-content h5 {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+
+        .notification-content p {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        .notification-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        /* User count badge */
+        .user-count-badge {
+            position: absolute;
+            bottom: 40px;
+            left: -30px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: floatSlow 5s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .avatar-stack {
+            display: flex;
+        }
+
+        .avatar-stack .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            margin-left: -12px;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .avatar-stack .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .avatar-stack .avatar:nth-child(2) {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+
+        .avatar-stack .avatar:nth-child(3) {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        }
+
+        .user-count-text {
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        .user-count-text strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Right side - Content */
+        .community-content-side {
+            padding: 2rem 0;
+        }
+
+        .community-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .community-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .community-title span {
+            color: var(--gold);
+        }
+
+        .community-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .community-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-community {
+            background: var(--gold);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgba(254, 191, 15, 0.4);
+        }
+
+        .btn-primary-community:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(254, 191, 15, 0.5);
+        }
+
+        .btn-secondary-community {
+            background: var(--white);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary-community:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 968px) {
+            .community-hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+            .community-image-side {
+                order: 1;
+            }
+            .community-content-side {
+                order: 2;
+            }
+            .community-title {
+                font-size: 2.5rem;
+            }
+            .community-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .community-buttons {
+                justify-content: center;
+            }
+            .floating-notification,
+            .user-count-badge {
+                display: none;
+            }
+        }
+
+        /* Hero Section - Unique Geometric Design */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .hero-container {
+            max-width: 1100px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--primary);
+            font-family: 'Ubuntu', sans-serif;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 span {
+            color: #febf0f;
+            display: inline-block;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Chat Input - Enhanced with Animations */
+        .chat-input-wrapper {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid var(--gold);
+            animation: scaleIn 0.8s ease 0.3s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-input-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(254,191,15,0.1), transparent);
+            animation: shimmer 3s linear infinite;
+        }
+
+        .chat-input-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .attach-button {
+            background: #febf0f;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(254,191,15,0.3);
+        }
+
+        .attach-button:hover {
+            background: #00FF00;
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,255,0,0.4);
+        }
+
+        .chat-input {
+            flex: 1;
+            border: none;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            outline: none;
+            background: transparent;
+        }
+
+        .chat-input::placeholder {
+            color: #aaa;
+        }
+
+        .send-button {
+            background: linear-gradient(135deg, #003366, #004080);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0,51,102,0.3);
+        }
+
+        .send-button:hover {
+            background: linear-gradient(135deg, #00FF00, #00cc00);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,255,0,0.4);
+        }
+
+        /* Agent Icons - Circular Design */
+        .agent-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: nowrap;
+            max-width: 100%;
+            margin: 0 auto 0.5rem;
+            animation: fadeIn 1s ease 0.6s backwards;
+            position: relative;
+            z-index: 1;
+            overflow: visible;
+            padding: 0 1rem 0 1rem;
+        }
+
+        .agent-icons::-webkit-scrollbar {
+            display: none;
+        }
+
+        .agent-icons {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .agent-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .agent-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .agent-tooltip {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            white-space: normal;
+            width: 200px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+            pointer-events: none;
+            margin-top: 0.5rem;
+        }
+
+        .agent-tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-bottom-color: var(--primary);
+        }
+
+        .agent-icon:hover .agent-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(15px);
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .agent-icon:hover .icon-circle {
+            border-color: #febf0f;
+            box-shadow: 0 4px 16px rgba(254,191,15,0.3);
+            transform: scale(1.1);
+        }
+
+        .icon-emoji {
+            font-size: 1.5rem;
+        }
+
+        .icon-label {
+            font-size: 0.65rem;
+            color: #1a1a1a;
+            text-align: center;
+            line-height: 1.2;
+            font-weight: 500;
+            max-width: 70px;
+        }
+
+        /* All Agents Link */
+        .all-agents-link {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 6rem;
+            animation: fadeIn 1s ease 0.8s backwards;
+        }
+
+        .all-agents-link a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .all-agents-link a:hover {
+            color: #febf0f;
+            border-bottom-color: #febf0f;
+        }
+
+        .quick-action {
+            background: rgba(255,255,255,0.95);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 0.9rem 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-family: 'Ubuntu', sans-serif;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-action::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            z-index: -1;
+        }
+
+        .quick-action:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .quick-action:hover {
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(254, 191, 15, 0.5);
+            border-color: var(--primary);
+        }
+
+        .quick-action:nth-child(1) {
+            animation: bounceIn 0.6s ease 0.8s backwards;
+        }
+
+        .quick-action:nth-child(2) {
+            animation: bounceIn 0.6s ease 0.9s backwards;
+        }
+
+        .quick-action:nth-child(3) {
+            animation: bounceIn 0.6s ease 1s backwards;
+        }
+
+        .quick-action:nth-child(4) {
+            animation: bounceIn 0.6s ease 1.1s backwards;
+        }
+
+        .quick-action:nth-child(5) {
+            animation: bounceIn 0.6s ease 1.2s backwards;
+        }
+
+        .quick-action-icon {
+            font-size: 1.3rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .quick-action:nth-child(even) .quick-action-icon {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Community Benefits */
+        .benefits-section {
+            padding: 6rem 5%;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-header.animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-header h2 span {
+            color: var(--gold);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Smooth bounce animation */
+        @keyframes smoothBounce {
+            0%, 100% {
+                transform: translateY(0) rotate(var(--rotate, 0deg));
+            }
+            50% {
+                transform: translateY(-20px) rotate(var(--rotate, 0deg));
+            }
+        }
+
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+
+        /* Benefit Card - Screenshot Style */
+        .benefit-card {
+            width: 320px;
+            height: 320px;
+            border-radius: 24px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: left;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            animation: smoothBounce 4s ease-in-out infinite;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            color: var(--white);
+        }
+
+        .benefit-card:hover {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Brand colors for benefit cards - unique colors */
+        .benefit-card:nth-child(1) {
+            background: linear-gradient(180deg, rgba(0, 51, 102, 0.85) 0%, rgba(0, 51, 102, 0.95) 100%);
+            --rotate: -5deg;
+            animation-delay: 0s;
+        }
+
+        .benefit-card:nth-child(2) {
+            background: linear-gradient(180deg, rgba(254, 191, 15, 0.85) 0%, rgba(254, 191, 15, 0.95) 100%);
+            --rotate: 3deg;
+            animation-delay: 0.7s;
+        }
+
+        .benefit-card:nth-child(3) {
+            background: linear-gradient(180deg, rgba(0, 128, 96, 0.85) 0%, rgba(0, 102, 76, 0.95) 100%);
+            --rotate: -3deg;
+            animation-delay: 1.4s;
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 968px) {
+            .benefit-card {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .benefit-card {
+                width: 240px;
+                height: 260px;
+                padding: 1.5rem;
+            }
+            .benefit-icon {
+                font-size: 2.5rem;
+            }
+            .benefit-card h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        .section-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .section-cta-button {
+            background: var(--gold);
+            color: var(--primary);
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(254, 191, 15, 0.4);
+        }
+
+        .section-cta-button:hover {
+            background: #00FF00;
+            color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Testimonials - Subtle Design with Floating Avatars */
+        .testimonials-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative curved lines */
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% 50%, transparent 40%, rgba(139, 92, 246, 0.1) 50%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .testimonials-section .section-header h2,
+        .testimonials-section .section-header p {
+            color: var(--primary);
+        }
+
+        .testimonials-section .section-header h2 span {
+            color: var(--gold);
+        }
+
+        /* Floating Avatars Container */
+        .floating-avatars {
+            position: relative;
+            height: 200px;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .floating-avatar {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid rgba(139, 92, 246, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: floatAvatar 4s ease-in-out infinite;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .floating-avatar:nth-child(1) {
+            left: 5%;
+            top: 20%;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            animation-delay: 0s;
+        }
+
+        .floating-avatar:nth-child(2) {
+            left: 20%;
+            top: 60%;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            animation-delay: 0.5s;
+        }
+
+        .floating-avatar:nth-child(3) {
+            left: 35%;
+            top: 30%;
+            background: linear-gradient(135deg, #34d399, #10b981);
+            animation-delay: 1s;
+        }
+
+        .floating-avatar:nth-child(4) {
+            left: 50%;
+            top: 70%;
+            background: linear-gradient(135deg, #f472b6, #ec4899);
+            animation-delay: 1.5s;
+        }
+
+        .floating-avatar:nth-child(5) {
+            left: 65%;
+            top: 25%;
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+            animation-delay: 2s;
+        }
+
+        .floating-avatar:nth-child(6) {
+            left: 80%;
+            top: 55%;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            animation-delay: 2.5s;
+        }
+
+        .floating-avatar:nth-child(7) {
+            left: 90%;
+            top: 15%;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            animation-delay: 0.3s;
+        }
+
+        /* Curved connecting lines */
+        .connection-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .connection-lines svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .connection-lines path {
+            fill: none;
+            stroke: url(#lineGradient);
+            stroke-width: 2;
+            opacity: 0.4;
+        }
+
+        @keyframes slideTestimonials {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .testimonials-grid {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            overflow: hidden;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 2rem;
+            animation: slideTestimonials 30s linear infinite;
+            will-change: transform;
+        }
+
+        .testimonials-track:hover {
+            animation-play-state: paused;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            color: var(--text);
+            padding: 2rem;
+            border-radius: 16px;
+            min-width: 350px;
+            max-width: 400px;
+            flex-shrink: 0;
+            transition: all 0.3s;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .author-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--gold), #ffd54f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--green);
+        }
+
+        .testimonial-date {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        /* Navigation arrow */
+        .testimonials-nav {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .testimonials-nav:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonials-nav span {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .floating-avatars {
+                height: 150px;
+            }
+            .floating-avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            .testimonial-card {
+                min-width: 280px;
+            }
+            .testimonials-nav {
+                display: none;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,255,0,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            left: -100px;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,51,102,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            right: -100px;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(0,51,102,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-primary:hover {
+            background: #00FF00;
+            color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 255, 0, 0.5);
+        }
+
+        .cta-urgency {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Creation Tools Modal */
+        .tools-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .tools-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .tools-panel {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .tools-panel.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .tools-header {
+            position: sticky;
+            top: 0;
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.2rem 2rem;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tools-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .tools-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 0;
+            color: var(--white);
+        }
+
+        .close-panel {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-panel:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .tools-content {
+            padding: 2rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tool-action {
+            background: var(--white);
+            border: 2px solid rgba(0, 51, 102, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem 0.6rem;
+            text-align: center;
+            color: var(--primary);
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tool-action:hover {
+            background: var(--gold);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(254, 191, 15, 0.3);
+            border-color: var(--gold);
+        }
+
+        .tool-action-icon {
+            font-size: 1.5rem;
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        /* Fancy WhatsApp Widget - Bottom Right (Pill Shape) */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: block;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            text-decoration: none;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-icon {
+            width: 50px;
+            height: 50px;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .whatsapp-icon i {
+            font-size: 1.6rem;
+            color: white;
+        }
+
+        .whatsapp-text {
+            background: #f5f5f5;
+            padding: 0 20px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+            font-family: 'Ubuntu', sans-serif;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .whatsapp-icon i {
+                font-size: 1.4rem;
+            }
+
+            .whatsapp-text {
+                height: 45px;
+                padding: 0 15px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--white);
+            color: var(--primary);
+            padding: 2rem 5%;
+            box-shadow: 0 -4px 20px rgba(254, 191, 15, 0.15), 0 -2px 10px rgba(254, 191, 15, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .footer-middle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .whatsapp-chat-btn {
+            background: #25D366;
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .whatsapp-chat-btn i {
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-chat-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .footer-scroll-top {
+            display: flex;
+            justify-content: flex-start;
+            padding: 1rem 0 0.5rem 0;
+        }
+
+        .scroll-to-top {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: none;
+            margin-right: 1rem;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 1rem 0;
+        }
+
+
+        .footer-copyright {
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .quick-actions {
+                flex-wrap: wrap;
+                max-width: 100%;
+            }
+            
+            .quick-action {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .benefit-card {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        /* Mobile Menu Toggle Button */
+        .mobile-menu-toggle {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            min-height: 44px;
+            z-index: 1001;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .mobile-menu-toggle svg {
+            width: 28px;
+            height: 28px;
+            stroke: #febf0f;
+            stroke-width: 2.5;
+            fill: none;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active svg {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile Dropdown Menu */
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            background: #003366;
+            transition: max-height 0.25s ease-out;
+        }
+
+        .mobile-dropdown-menu.menu-open {
+            max-height: 700px;
+        }
+
+        .mobile-dropdown-menu a,
+        .mobile-dropdown-menu .mobile-res-toggle {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Ubuntu', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .mobile-dropdown-menu a:hover,
+        .mobile-dropdown-menu .mobile-res-toggle:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-dropdown-menu .mobile-res-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-dropdown-menu .mobile-res-toggle .res-arrow {
+            transition: transform 0.2s ease;
+            font-size: 0.7rem;
+        }
+
+        .mobile-dropdown-menu .mobile-res-toggle.open .res-arrow {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-menu .mobile-res-sub {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .mobile-dropdown-menu .mobile-res-sub.open {
+            max-height: 200px;
+        }
+
+        .mobile-dropdown-menu .mobile-res-sub a {
+            padding-left: 40px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-dropdown-menu .mobile-nav-cta {
+            background: #febf0f;
+            color: #003366;
+            font-weight: 700;
+            text-align: center;
+            margin: 12px 20px;
+            border-radius: 8px;
+            border-bottom: none;
+            padding: 12px 20px;
+            width: calc(100% - 40px);
+        }
+
+        .mobile-dropdown-menu .mobile-nav-cta:hover {
+            background: #00FF00;
+        }
+
+        @media (min-width: 769px) {
+            .mobile-dropdown-menu {
+                display: none;
+            }
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 4%;
+            }
+
+            .logo img {
+                height: 25px;
+            }
+
+            nav {
+                padding: 0.8rem 2%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            nav > ul {
+                display: none !important;
+            }
+
+            .mobile-hamburger {
+                display: flex;
+            }
+        }
+
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.7rem 1.5%;
+            }
+
+            .logo img {
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 5% 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .chat-input-wrapper {
+                padding: 1rem;
+            }
+
+            .quick-actions {
+                gap: 0.8rem;
+                flex-wrap: wrap;
+            }
+
+            .quick-action {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.8rem;
+                min-width: calc(50% - 0.3rem);
+                max-width: calc(50% - 0.3rem);
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.3rem;
+                flex: 0 0 calc(50% - 0.3rem);
+            }
+
+            .quick-action-icon {
+                font-size: 1.3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .benefits-grid {
+                gap: 1.5rem;
+            }
+
+            .benefit-card {
+                width: 100%;
+                max-width: 350px;
+                height: auto;
+                min-height: 280px;
+                padding: 1.5rem;
+            }
+
+            .community-hero-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .community-image-side,
+            .community-content-side {
+                width: 100%;
+            }
+
+            .community-title {
+                font-size: 2.5rem;
+            }
+
+            .testimonials-grid {
+                padding: 0 1rem;
+            }
+
+            .testimonial-card {
+                min-width: 300px;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .footer-top {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .chat-input-wrapper {
+                padding: 0.8rem;
+            }
+
+            .attach-button,
+            .send-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .quick-action {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+                min-width: 100%;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.3rem;
+            }
+
+            .quick-action-icon {
+                font-size: 1.1rem;
+            }
+
+            .benefit-card {
+                width: 100%;
+                height: auto;
+                min-height: 240px;
+                padding: 1.5rem;
+            }
+
+            .benefit-icon {
+                font-size: 2.5rem;
+            }
+
+            .benefit-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .community-title {
+                font-size: 2rem;
+            }
+
+            .community-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-primary-community,
+            .btn-secondary-community {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .testimonial-card {
+                min-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="https://ndovesha.ai/">
+                <img src="ndovesha logo.png" alt="Ndovesha Logo">
+            </a>
+        </div>
+        <ul>
+            <li><a href="index.html#how-it-works">How it Works</a></li>
+            <li><a href="index.html#benefits">Why Ndovesha</a></li>
+            <li><a href="creations.html">Creations</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li class="nav-item">
+                <span class="nav-link">
+                    Resources
+                    <span class="dropdown-arrow">▼</span>
+                </span>
+                <div class="dropdown-menu">
+                    <a href="https://blog.ndovesha.ai/" target="_blank">Blog</a>
+                    <a href="webinars.html">Webinars</a>
+                    <a href="join-our-community.html">Join Our Community</a>
+                </div>
+            </li>
+            <li><a href="https://chat.ndovesha.ai/login" class="nav-cta">Login</a></li>
+            <li><a href="https://chat.ndovesha.ai/signup" class="nav-signup-btn">Get Started</a></li>
+        </ul>
+        <button class="mobile-hamburger" id="mobileMenuToggle" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+        <a href="index.html#how-it-works">How it Works</a>
+        <a href="index.html#benefits">Why Ndovesha</a>
+        <a href="creations.html">Creations</a>
+        <a href="index.html#pricing">Pricing</a>
+        <button class="mobile-res-toggle" id="mobileResToggle">Resources <span class="res-arrow">▼</span></button>
+        <div class="mobile-res-sub" id="mobileResSub">
+            <a href="https://blog.ndovesha.ai/" target="_blank">Blog</a>
+            <a href="webinars.html">Webinars</a>
+            <a href="join-our-community.html">Join Our Community</a>
+        </div>
+        <a href="https://chat.ndovesha.ai/login" class="mobile-nav-cta">Login</a>
+        <a href="https://chat.ndovesha.ai/signup" class="mobile-nav-cta">Get Started</a>
+    </div>
+
+    <!-- Hero Section - Manus Style with Color -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>What do you want to <span>make</span> today?</h1>
+            
+            <div class="chat-input-wrapper">
+                <div class="chat-input-container">
+                    <input 
+                        type="text" 
+                        class="chat-input" 
+                        placeholder="Describe what you want to create..."
+                    >
+                    <button class="send-button" onclick="window.location.href='https://chat.ndovesha.ai/signup'" aria-label="Send message">➤</button>
+                </div>
+            </div>
+
+            <div class="agent-icons">
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Generate stunning social media images with AI. Just describe your vision!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">🖼️</span>
+                    </div>
+                    <span class="icon-label">Social Media<br>Post Image</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Create engaging social media videos with AI-powered editing and effects!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">🎥</span>
+                    </div>
+                    <span class="icon-label">Social Media<br>Post Video</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Design high-converting ad creatives that capture attention and drive results!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">🎨</span>
+                    </div>
+                    <span class="icon-label">Ad Image</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Write compelling captions that boost engagement and connect with your audience!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">✍️</span>
+                    </div>
+                    <span class="icon-label">Caption</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Build conversion-focused landing pages with CTAs - no coding needed!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">�</span>
+                    </div>
+                    <span class="icon-label">Landing Page</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Create professional logos that perfectly represent your brand identity!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">🎯</span>
+                    </div>
+                    <span class="icon-label">Logo</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Plan and schedule your content strategy with AI-powered recommendations!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">📅</span>
+                    </div>
+                    <span class="icon-label">Content<br>Calendar</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Generate SEO-optimized blog posts that rank high and drive organic traffic!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">📝</span>
+                    </div>
+                    <span class="icon-label">SEO Blog</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Design email campaigns with subject lines and copy that maximize opens and clicks!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">💡</span>
+                    </div>
+                    <span class="icon-label">Email<br>Campaign</span>
+                </div>
+                <div class="agent-icon" onclick="window.location.href='https://chat.ndovesha.ai/signup'">
+                    <div class="agent-tooltip">Develop complete brand identities with logos, colors, and style guides!</div>
+                    <div class="icon-circle">
+                        <span class="icon-emoji">✏️</span>
+                    </div>
+                    <span class="icon-label">Brand<br>Identity</span>
+                </div>
+            </div>
+            
+            <div class="all-agents-link">
+                <a href="https://chat.ndovesha.ai/signup">All Agents →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Hero - Engaging Split Layout -->
+    <section class="community-hero">
+        <div class="community-hero-container">
+            <!-- Left: Image with floating elements -->
+            <div class="community-image-side">
+                <!-- Floating notification -->
+                <div class="floating-notification">
+                    <div class="notification-avatar">👤</div>
+                    <div class="notification-content">
+                        <h5>Marketing Team & 12 others</h5>
+                        <p>↙ Active now</p>
+                    </div>
+                    <div class="notification-icon">📹</div>
+                </div>
+                
+                <!-- Main image placeholder -->
+                <div class="community-main-image">
+                    <img src="community.png" alt="Ndovesha Community">
+                </div>
+                
+                <!-- User count badge -->
+                <div class="user-count-badge">
+                    <div class="avatar-stack">
+                        <div class="avatar">👩</div>
+                        <div class="avatar">�</div>
+                        <div class="avatar">👩‍💼</div>
+                    </div>
+                    <div class="user-count-text">
+                        Joined by over <strong>2,000+</strong><br>marketers worldwide
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right: Content -->
+            <div class="community-content-side">
+                <div class="community-label">Build Community</div>
+                <h1 class="community-title">Your marketing<br>tribe on <span>WhatsApp</span></h1>
+                <p class="community-description">
+                    Gather with marketers who mean the most to your growth, be it your industry peers or your local business buddies, by joining a community that encompasses them all.
+                </p>
+                <div class="community-buttons">
+                    <a href="https://whatsapp.com/channel/0029VbC6HuR7dmeiViuoPI2m" target="_blank" class="btn-primary-community">
+                        Join Community
+                    </a>
+                    <a href="https://wa.me/254112480181" target="_blank" class="btn-secondary-community">
+                        WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits-section">
+        <div class="section-header">
+            <h2>Why high-performers choose <span>Ndovesha</span></h2>
+            <p>This isn't another noisy group chat.<br>It's where serious creators come to win.</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🤝</div>
+                <h3>You're no longer figuring it out alone</h3>
+                <p>Connect with marketers and founders who are already winning — and learn directly from them.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">✨</div>
+                <h3>Early access before everyone else</h3>
+                <p>Get new AI tools and features before the public — and stay ahead of the competition.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>Instant feedback when momentum matters</h3>
+                <p>Get real feedback from growth-focused creators — move forward fast, not stuck second-guessing.</p>
+            </div>
+        </div>
+        <div class="section-cta">
+            <a href="https://whatsapp.com/channel/0029VbC6HuR7dmeiViuoPI2m" target="_blank" class="section-cta-button">Join the Community</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <h2>What happens when you join <span>Ndovesha</span> community</h2>
+            <p>Real people. Real results. Real momentum.</p>
+        </div>
+        
+        <!-- Floating Avatars with Connection Lines -->
+        <div class="floating-avatars">
+            <!-- SVG for curved connection lines -->
+            <svg class="connection-lines" viewBox="0 0 800 200" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+                        <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:0.5" />
+                        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+                    </linearGradient>
+                </defs>
+                <path d="M40,80 Q200,40 320,100 T560,80 T720,120" stroke="url(#lineGradient)" stroke-width="2" fill="none"/>
+                <path d="M80,140 Q240,180 400,120 T640,160" stroke="url(#lineGradient)" stroke-width="2" fill="none"/>
+            </svg>
+            
+            <!-- Floating avatar circles -->
+            <div class="floating-avatar">👩</div>
+            <div class="floating-avatar">👨</div>
+            <div class="floating-avatar">👩‍💼</div>
+            <div class="floating-avatar">👨‍💻</div>
+            <div class="floating-avatar">👩‍🎨</div>
+            <div class="floating-avatar">👨‍🔬</div>
+            <div class="floating-avatar">👩‍💻</div>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonials-track">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I love it. Ndovesha makes it easy to generate high-quality content in minutes"</p>
+                    <div class="testimonial-author">
+                        <div class="author-left">
+                            <div class="author-avatar">NT</div>
+                            <div class="author-info">
+                                <h4>Ntali</h4>
+                                <p>Eye Create</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-date">Recent</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">It was amazing using the product design prompt. Keep it up — you're doing a great job!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-left">
+                            <div class="author-avatar">NF</div>
+                            <div class="author-info">
+                                <h4>Nanfa</h4>
+                                <p>Product Designer</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-date">Recent</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I've tried it and it's mind-blowing. It created a content calendar for my business, created one for my sister-in-law, and I'm even giving it out for free to business owners today. This is the start of something great!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-left">
+                            <div class="author-avatar">JN</div>
+                            <div class="author-info">
+                                <h4>Jennifer</h4>
+                                <p>Social Media Manager</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-date">Recent</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I'm honestly amazed by the product… you guys have done an amazing job. Congratulations! 🎉"</p>
+                    <div class="testimonial-author">
+                        <div class="author-left">
+                            <div class="author-avatar">AV</div>
+                            <div class="author-info">
+                                <h4>Asgeviolet</h4>
+                                <p>Creator</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-date">Recent</span>
+                    </div>
+                </div>
+                <!-- Duplicate cards for seamless loop -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I love it. Ndovesha makes it easy to generate high-quality content in minutes"</p>
+                    <div class="testimonial-author">
+                        <div class="author-left">
+                            <div class="author-avatar">NT</div>
+                            <div class="author-info">
+                                <h4>Ntali</h4>
+                                <p>Eye Create</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-date">Recent</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">It was amazing using the product design prompt. Keep it up — you're doing a great job!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-left">
+                            <div class="author-avatar">NF</div>
+                            <div class="author-info">
+                                <h4>Nanfa</h4>
+                                <p>Product Designer</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-date">Recent</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I've tried it and it's mind-blowing. It created a content calendar for my business, created one for my sister-in-law, and I'm even giving it out for free to business owners today. This is the start of something great!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-left">
+                            <div class="author-avatar">JN</div>
+                            <div class="author-info">
+                                <h4>Jennifer</h4>
+                                <p>Social Media Manager</p>
+                            </div>
+                        </div>
+                        <span class="testimonial-date">Recent</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>This is where the smart marketers are going</h2>
+        <p>Every week you wait, others are learning faster, shipping better content, and closing more opportunities with AI.</p>
+        <div class="cta-buttons">
+            <a href="https://whatsapp.com/channel/0029VbC6HuR7dmeiViuoPI2m" target="_blank" class="cta-primary">Join the Community</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/ndovesha/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@Ndovesha" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@_ndovesha" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/ndovesha" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/ndovesha/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/ndovesha" target="_blank" aria-label="X" style="font-weight: 900; font-family: 'Ubuntu', sans-serif;">X</a>
+                    <a href="https://ndovesha.com/" target="_blank" aria-label="Google"><i class="fab fa-google"></i></a>
+                    <a href="https://www.reddit.com/u/ndovesha/s/u9MncWYnnp" target="_blank" aria-label="Reddit"><i class="fab fa-reddit"></i></a>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-middle">
+                <div class="footer-copyright">
+                    © 2026 Ndovesha - Crafted With ❤️ By The Ndovesha Team 👌
+                </div>
+                <ul class="footer-links">
+                    <li><a href="contacts.html">Contact Us</a></li>
+                    <li><a href="terms-of-service.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom-actions">
+                <button class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top">↑</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fancy WhatsApp Widget - Bottom Right (Pill Shape) -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/254112480181" target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+            <div class="whatsapp-icon">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <span class="whatsapp-text">Chat with us</span>
+        </a>
+    </div>
+
+    <!-- Creation Tools Modal -->
+    <div class="tools-overlay" id="toolsOverlay">
+        <div class="tools-panel" id="toolsPanel">
+            <div class="tools-header">
+                <button class="close-panel" id="closePanel">×</button>
+                <h2>What do you want to <span style="color: var(--gold);">make</span> today?</h2>
+                <p class="tools-subtitle">Choose from our most popular creation tools</p>
+            </div>
+            <div class="tools-content">
+                <div class="tools-grid">
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📢</span>
+                        Ad creatives
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🖼️</span>
+                        Banner
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🏢</span>
+                        Billboards
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📝</span>
+                        Blog posts
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🎨</span>
+                        Brand identity
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📖</span>
+                        Brochures
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">💳</span>
+                        Business cards
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📄</span>
+                        Client / vendor agreements
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📞</span>
+                        Cold calling scripts
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🏢</span>
+                        Company profile
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📅</span>
+                        Content calendar
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">💡</span>
+                        Content ideas
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">👤</span>
+                        Customer persona
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📧</span>
+                        Email campaigns
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">✉️</span>
+                        Email signatures
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📋</span>
+                        Flyers / posters
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🌐</span>
+                        Full website copy
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📸</span>
+                        Instagram captions
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🌐</span>
+                        Landing pages
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🎯</span>
+                        Logo
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📊</span>
+                        Marketing brief
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📊</span>
+                        Presentation content
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📰</span>
+                        Press releases
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🔒</span>
+                        Privacy policy
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🛍️</span>
+                        Product descriptions
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndoveesh.com/'">
+                        <span class="tool-action-icon">📋</span>
+                        RFP responses
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🔍</span>
+                        SEO blog posts
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📱</span>
+                        Social media bios
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">💬</span>
+                        Social media captions
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">⚖️</span>
+                        Terms & conditions
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🎬</span>
+                        Video covers
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">🎥</span>
+                        Videos
+                    </button>
+                    <button class="tool-action" onclick="window.location.href='https://ndovesha.com/'">
+                        <span class="tool-action-icon">📺</span>
+                        YouTube thumbnails
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        const nav = document.querySelector('nav');
+        const hero = document.querySelector('.hero');
+
+        window.addEventListener('scroll', () => {
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            if (window.scrollY > heroBottom - 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll-triggered animations using Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        const animatedElements = document.querySelectorAll(
+            '.section-header, .benefit-card, .testimonial-card'
+        );
+
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Tools Modal Functionality
+        const toolsPanel = document.getElementById('toolsPanel');
+        const toolsOverlay = document.getElementById('toolsOverlay');
+        const closePanel = document.getElementById('closePanel');
+        const moreButton = document.querySelector('.quick-action:last-child');
+
+        // Open modal
+        if (moreButton) {
+            moreButton.addEventListener('click', () => {
+                toolsOverlay.classList.add('active');
+                toolsPanel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // Close modal
+        const closeModalFunc = () => {
+            toolsOverlay.classList.remove('active');
+            toolsPanel.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        closePanel.addEventListener('click', closeModalFunc);
+        
+        // Close when clicking outside the modal
+        toolsOverlay.addEventListener('click', (e) => {
+            if (e.target === toolsOverlay) {
+                closeModalFunc();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && toolsOverlay.classList.contains('active')) {
+                closeModalFunc();
+            }
+        });
+
+        // Alternate text between "Ndovesha Inner Circle" and "Ndovesha Community"
+        const communityText = document.getElementById('communityText');
+        const texts = ['Ndovesha Inner Circle', 'Ndovesha Community'];
+        let currentIndex = 0;
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % texts.length;
+            communityText.style.opacity = '0';
+            
+            setTimeout(() => {
+                communityText.textContent = texts[currentIndex];
+                communityText.style.opacity = '1';
+            }, 300);
+        }, 4000);
+
+        // Mobile Dropdown Menu Functionality
+        (function() {
+            var toggle = document.getElementById('mobileMenuToggle');
+            var menu = document.getElementById('mobileDropdownMenu');
+            var resToggle = document.getElementById('mobileResToggle');
+            var resSub = document.getElementById('mobileResSub');
+
+            if (toggle && menu) {
+                toggle.addEventListener('click', function() {
+                    toggle.classList.toggle('active');
+                    menu.classList.toggle('menu-open');
+                });
+
+                menu.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        toggle.classList.remove('active');
+                        menu.classList.remove('menu-open');
+                    });
+                });
+            }
+
+            if (resToggle && resSub) {
+                resToggle.addEventListener('click', function() {
+                    resToggle.classList.toggle('open');
+                    resSub.classList.toggle('open');
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menu && menu.classList.contains('menu-open')) {
+                    toggle.classList.remove('active');
+                    menu.classList.remove('menu-open');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
