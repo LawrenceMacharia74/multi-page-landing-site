@@ -872,6 +872,29 @@
             opacity: 1 !important;
         }
 
+        .upload-button {
+            background: var(--white);
+            border: 1.5px solid #ddd;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            border-radius: 8px;
+            color: #555;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-right: 6px;
+        }
+
+        .upload-button:hover {
+            border-color: #febf0f;
+            color: #febf0f;
+        }
+
         .send-button:hover {
             background: #003366;
             transform: scale(1.05);
@@ -5295,6 +5318,10 @@
                         class="chat-input" 
                         placeholder="Describe what you want to create..."
                     >
+                    <input type="file" id="fileInput" accept="image/*" style="display:none;">
+                    <button class="upload-button" onclick="document.getElementById('fileInput').click()" aria-label="Upload image">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
                     <button class="send-button" onclick="window.location.href='https://chat.ndovesha.ai/signup'" aria-label="Send message">➤</button>
                 </div>
             </div>
